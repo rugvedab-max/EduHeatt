@@ -1,0 +1,303 @@
+{
+  "project": "EduHeat — AI City-Life Planner & Heat Safety",
+  "version": "1.0.0",
+  "author": "Somaiya Vidyavihar University / KJSCE",
+  "localities": [
+    { "name": "Chembur", "lat": 19.0622, "lon": 72.8973, "suburb": "Eastern Suburbs" },
+    { "name": "Ghatkopar", "lat": 19.0860, "lon": 72.9090, "suburb": "Eastern Suburbs" },
+    { "name": "Kurla", "lat": 19.0657, "lon": 72.8794, "suburb": "Central Mumbai" },
+    { "name": "Dadar", "lat": 19.0178, "lon": 72.8478, "suburb": "South Central" },
+    { "name": "Powai", "lat": 19.1176, "lon": 72.9060, "suburb": "Northern Suburbs" },
+    { "name": "Andheri", "lat": 19.1197, "lon": 72.8468, "suburb": "Western Suburbs" },
+    { "name": "Vidyavihar", "lat": 19.0800, "lon": 72.8961, "suburb": "Eastern Suburbs" },
+    { "name": "K. J. Somaiya Campus (KJSCE)", "lat": 19.0731, "lon": 72.8997, "suburb": "Vidyavihar East" }
+  ],
+  "campus": {
+    "center": [19.0730, 72.8998],
+    "zoom": 17,
+    "boundary": [
+      [19.0764, 72.8976],
+      [19.0765, 72.9018],
+      [19.0738, 72.9026],
+      [19.0706, 72.9022],
+      [19.0704, 72.8982],
+      [19.0732, 72.8974],
+      [19.0764, 72.8976]
+    ],
+    "buildings": [
+      {
+        "id": "bldg-aryabhatta",
+        "name": "K J Somaiya School of Engineering — Aryabhatta Building",
+        "category": "academic",
+        "heat_risk": "moderate",
+        "coords": [
+          [19.0734, 72.8994],
+          [19.0734, 72.9002],
+          [19.0728, 72.9002],
+          [19.0728, 72.8994],
+          [19.0734, 72.8994]
+        ],
+        "notes": "Main KJSSE engineering block; shaded ground-floor concourse and cooled laboratories."
+      },
+      {
+        "id": "bldg-bhaskaracharya",
+        "name": "Bhaskaracharya Building (Engineering Labs & Departments)",
+        "category": "academic",
+        "heat_risk": "moderate",
+        "coords": [
+          [19.0726, 72.8994],
+          [19.0726, 72.9002],
+          [19.0720, 72.9002],
+          [19.0720, 72.8994],
+          [19.0726, 72.8994]
+        ],
+        "notes": "Covers mechanical, electrical, and computer engineering wings."
+      },
+      {
+        "id": "bldg-library",
+        "name": "Somaiya Central Library & Air-Conditioned Reading Hall",
+        "category": "library",
+        "heat_risk": "comfortable",
+        "coords": [
+          [19.0731, 72.9004],
+          [19.0731, 72.9011],
+          [19.0725, 72.9011],
+          [19.0725, 72.9004],
+          [19.0731, 72.9004]
+        ],
+        "notes": "Primary campus heat shelter; high-capacity air-conditioning and chilled RO water."
+      },
+      {
+        "id": "bldg-gargi",
+        "name": "Maitreyi & Gargi Campus Hostels",
+        "category": "residential",
+        "heat_risk": "moderate",
+        "coords": [
+          [19.0745, 72.8980],
+          [19.0745, 72.8990],
+          [19.0738, 72.8990],
+          [19.0738, 72.8980],
+          [19.0745, 72.8980]
+        ],
+        "notes": "Tree-lined residential perimeter with shaded inner courtyards."
+      }
+    ],
+    "pois": [
+      {
+        "id": "somaiya-vidyavihar-gate",
+        "name": "Somaiya Vidyavihar Main Campus Gate",
+        "lat": 19.0760,
+        "lon": 72.8980,
+        "type": "entrance",
+        "ac": false,
+        "water": true,
+        "desc": "Primary pedestrian & auto access point connecting from Vidyavihar station."
+      },
+      {
+        "id": "somaiya-kjsse-aryabhatta",
+        "name": "K J Somaiya Engineering (Aryabhatta Wing)",
+        "lat": 19.0731,
+        "lon": 72.8997,
+        "type": "academic",
+        "ac": true,
+        "water": true,
+        "desc": "Dean's office, auditorium, computer labs, and water filtration station."
+      },
+      {
+        "id": "somaiya-central-library",
+        "name": "Somaiya Vidyavihar Central Library",
+        "lat": 19.0729,
+        "lon": 72.9007,
+        "type": "library",
+        "ac": true,
+        "water": true,
+        "desc": "Centrally cooled reading halls with over 400 seats and RO drinking water."
+      },
+      {
+        "id": "somaiya-mess-canteen",
+        "name": "Somaiya Central Canteen & Food Court",
+        "lat": 19.0736,
+        "lon": 72.8990,
+        "type": "food_water",
+        "ac": false,
+        "water": true,
+        "desc": "Covered shaded seating with fresh fruit juice, water dispensers, and meals."
+      },
+      {
+        "id": "somaiya-sports-ground",
+        "name": "Somaiya Athletics Track & Sports Ground",
+        "lat": 19.0718,
+        "lon": 72.8985,
+        "type": "sports",
+        "ac": false,
+        "water": true,
+        "desc": "Open athletic stadium; canopy trees around perimeter benches."
+      }
+    ]
+  },
+  "cooling_places": [
+    {
+      "id": "mum-osm-1",
+      "name": "Ghatkopar Metro Station Concourse (Line 1)",
+      "category": "transit",
+      "tier": "public_indoor_place",
+      "city": "Mumbai",
+      "locality": "Ghatkopar",
+      "address": "Ghatkopar West Station Road, Ghatkopar, Mumbai 400086",
+      "lat": 19.0865,
+      "lon": 72.9081,
+      "hours": "05:30-23:30",
+      "water": true,
+      "ac": true,
+      "amenities": ["Air-Conditioned Concourse", "Elevator", "Drinking Water Point", "First Aid"]
+    },
+    {
+      "id": "mum-osm-2",
+      "name": "K J Somaiya Campus Central Library & Reading Hall",
+      "category": "library",
+      "tier": "public_indoor_place",
+      "city": "Mumbai",
+      "locality": "Vidyavihar",
+      "address": "Somaiya Vidyavihar Campus, Vidyavihar East, Mumbai 400077",
+      "lat": 19.0729,
+      "lon": 72.8996,
+      "hours": "08:30-20:00",
+      "water": true,
+      "ac": true,
+      "amenities": ["Cooled Reading Hall", "RO Drinking Water", "Restrooms", "Shaded Walkways"]
+    },
+    {
+      "id": "mum-osm-3",
+      "name": "Rajawadi Municipal Hospital & ORS Heat-Relief Corner",
+      "category": "health",
+      "tier": "official_cooling_centre",
+      "city": "Mumbai",
+      "locality": "Ghatkopar",
+      "address": "7th Road, Rajawadi Colony, Ghatkopar East, Mumbai 400077",
+      "lat": 19.0789,
+      "lon": 72.9019,
+      "hours": "24/7",
+      "water": true,
+      "ac": true,
+      "amenities": ["BMC ORS Distribution Corner", "24x7 Emergency Ward", "Drinking Water"]
+    },
+    {
+      "id": "mum-osm-4",
+      "name": "Vidyavihar Railway Station Concourse & Water Booth",
+      "category": "water",
+      "tier": "official_cooling_centre",
+      "city": "Mumbai",
+      "locality": "Vidyavihar",
+      "address": "Vidyavihar Station East/West Footbridge, Mumbai 400077",
+      "lat": 19.0796,
+      "lon": 72.8975,
+      "hours": "24/7",
+      "water": true,
+      "ac": false,
+      "amenities": ["Drinking Water Stall", "Roofed Platform Shade", "Seating Benches"]
+    },
+    {
+      "id": "mum-osm-9",
+      "name": "Diamond Garden (Narayan Gajanan Acharya Udyan) Shaded Canopy",
+      "category": "park",
+      "tier": "potential_cooling_place",
+      "city": "Mumbai",
+      "locality": "Chembur",
+      "address": "Central Avenue, Chembur, Mumbai 400071",
+      "lat": 19.0601,
+      "lon": 72.8988,
+      "hours": "06:00-21:00",
+      "water": true,
+      "ac": false,
+      "amenities": ["Dense Rain-Tree Canopy", "Public Walking Track", "Municipal Water Tap"]
+    },
+    {
+      "id": "mum-osm-10",
+      "name": "Chembur Station Railway Concourse & Jal Seva Water Booth",
+      "category": "water",
+      "tier": "official_cooling_centre",
+      "city": "Mumbai",
+      "locality": "Chembur",
+      "address": "Station Road, Govandi Road, Chembur, Mumbai 400071",
+      "lat": 19.0624,
+      "lon": 72.8996,
+      "hours": "24/7",
+      "water": true,
+      "ac": false,
+      "amenities": ["Chilled RO Water Tap", "Shaded FOB Concourse", "Platform Seating"]
+    },
+    {
+      "id": "mum-osm-11",
+      "name": "Kurla Suburban Junction Concourse & Piao Shelter",
+      "category": "transit",
+      "tier": "official_cooling_centre",
+      "city": "Mumbai",
+      "locality": "Kurla",
+      "address": "Station Road, Kurla West, Mumbai 400070",
+      "lat": 19.0655,
+      "lon": 72.8790,
+      "hours": "24/7",
+      "water": true,
+      "ac": false,
+      "amenities": ["Elevated Shaded Concourse", "Jal Seva Drinking Water", "Railway First Aid"]
+    },
+    {
+      "id": "mum-osm-12",
+      "name": "Andheri Metro Station Concourse & AC Transit Shelter (Line 1)",
+      "category": "transit",
+      "tier": "public_indoor_place",
+      "city": "Mumbai",
+      "locality": "Andheri",
+      "address": "Swami Vivekananda Road, Andheri West, Mumbai 400058",
+      "lat": 19.1199,
+      "lon": 72.8465,
+      "hours": "05:30-23:45",
+      "water": true,
+      "ac": true,
+      "amenities": ["Air-Conditioned Concourse", "RO Water Dispenser", "Elevators"]
+    },
+    {
+      "id": "mum-osm-8",
+      "name": "Hiranandani Nirvana Park & Shaded Pavilion",
+      "category": "park",
+      "tier": "potential_cooling_place",
+      "city": "Mumbai",
+      "locality": "Powai",
+      "address": "Central Avenue, Hiranandani Gardens, Powai, Mumbai 400076",
+      "lat": 19.1187,
+      "lon": 72.9114,
+      "hours": "06:00-20:00",
+      "water": false,
+      "ac": false,
+      "amenities": ["Shaded Pergolas", "Pond Microclimate", "Park Benches"]
+    },
+    {
+      "id": "mum-osm-5",
+      "name": "Five Gardens Shaded Rain-Tree Canopy",
+      "category": "park",
+      "tier": "potential_cooling_place",
+      "city": "Mumbai",
+      "locality": "Dadar",
+      "address": "Parsi Colony, Dadar East, Mumbai 400014",
+      "lat": 19.0196,
+      "lon": 72.8543,
+      "hours": "05:00-22:00",
+      "water": false,
+      "ac": false,
+      "amenities": ["Dense Rain-Tree Canopy", "Public Benches", "Breezy Walkways"]
+    }
+  ],
+  "weather": {
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "temperature_c": 31.5,
+    "apparent_temperature_c": 36.8,
+    "wet_bulb_temperature_c": 26.2,
+    "humidity_pct": 72,
+    "uv_index": 7.4,
+    "wind_speed_kmh": 14.5,
+    "comfort_score": 68,
+    "risk_level": "moderate",
+    "summary_advice": "High humidity keeps apparent temperature higher than thermometer readings. Seek shade between 12:00 PM and 04:00 PM and stay hydrated."
+  }
+}

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduHeat — AI City-Life Planner & Heat Safety</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Leaflet Map CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+</head>
+<body>
+
+  <!-- Top Application Header -->
+  <header>
+    <div class="header-container">
+      <a href="#" class="brand">
+        <div class="brand-icon">☀️</div>
+        <div class="brand-text">
+          <h1>EduHeat</h1>
+          <p>Your city. Your plans. A smarter way to step out.</p>
+        </div>
+      </a>
+      <nav class="nav-tabs" aria-label="Main Navigation">
+        <button class="tab-btn active" data-tab="dashboard">Dashboard</button>
+        <button class="tab-btn" data-tab="places">Cooling Places</button>
+        <button class="tab-btn" data-tab="campus">Somaiya Campus</button>
+        <button class="tab-btn" data-tab="calculator">Cost Calculator</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main>
+
+    <!-- 1. DASHBOARD TAB -->
+    <section id="dashboard" class="tab-pane active">
+      <!-- Hero Weather & Telemetry Banner -->
+      <div class="hero-telemetry">
+        <div class="hero-main">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+            <span class="badge-risk">Moderate Thermal Load</span>
+            <span style="font-size: 11px; opacity: 0.85;">• Live Open-Meteo Sensor</span>
+          </div>
+          <h2 id="dash-temp">31.5°C</h2>
+          <p id="dash-feel">Feels like 36.8°C • Mumbai, Maharashtra</p>
+        </div>
+
+        <div class="grid-3" style="gap: 12px;">
+          <div class="stat-box">
+            <div class="val" id="dash-comfort">68/100</div>
+            <div class="lbl">Comfort Score</div>
+          </div>
+          <div class="stat-box">
+            <div class="val" id="dash-uv">7.4</div>
+            <div class="lbl">UV Index</div>
+          </div>
+          <div class="stat-box">
+            <div class="val" id="dash-hum">72%</div>
+            <div class="lbl">Humidity</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Advisory Card -->
+      <div class="card">
+        <h3 class="card-title">💡 Live Outdoor Guidance & Thermal Window</h3>
+        <p id="dash-advice" style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">
+          High humidity keeps apparent temperature higher than thermometer readings. Seek shade between 12:00 PM and 04:00 PM and stay hydrated.
+        </p>
+      </div>
+
+      <!-- Actionable Daily Brief Grid -->
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="card-title">🚆 Transit & Corridor Recommendation</h3>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">
+            Western Railway AC Local & Metro Line 1 concourses operating with active cooling. Shaded walking path available along Central Avenue, Chembur and Somaiya Vidyavihar campus.
+          </p>
+          <span class="tag tag-ac">Recommended AC Commute</span>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">🌳 Microclimate Canopy Watch</h3>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">
+            Pali Hill & Five Gardens (Dadar) maintain up to 2.4°C cooler microclimates under mature rain-tree canopies compared to unshaded asphalt avenues.
+          </p>
+          <span class="tag tag-park">78% Ward Canopy Score</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. COOLING PLACES TAB -->
+    <section id="places" class="tab-pane">
+      <div class="card">
+        <h3 class="card-title">📍 Nearby Heat Shelters & Verified Cooling Places</h3>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 14px;">
+          Find air-conditioned halls, shaded public parks, free drinking water piaos, and transit concourses across Mumbai.
+        </p>
+
+        <!-- Search Bar with Mumbai Localities -->
+        <div class="search-wrapper">
+          <input 
+            type="text" 
+            id="places-search-input" 
+            class="search-input" 
+            placeholder="Search Chembur, Ghatkopar, Kurla, Dadar, Powai, Andheri, or Vidyavihar..."
+          >
+          <button id="places-search-btn" class="btn-primary">Search</button>
+        </div>
+
+        <!-- Interactive Map -->
+        <div id="places-map"></div>
+
+        <!-- Places List -->
+        <div id="places-list"></div>
+      </div>
+    </section>
+
+    <!-- 3. SOMAIYA CAMPUS MAP TAB -->
+    <section id="campus" class="tab-pane">
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
+          <div>
+            <h3 class="card-title" style="margin-bottom: 4px;">🎓 K J Somaiya School of Engineering & Vidyavihar Campus</h3>
+            <p style="font-size: 13px; color: var(--text-muted);">
+              65-Acre Verified Campus Map • Building Footprints, Shaded Corridors, and Facilities
+            </p>
+          </div>
+          <span class="tag tag-water" style="padding: 6px 12px; font-size: 11px;">Verified OSM Geometry</span>
+        </div>
+
+        <!-- Leaflet Map Container -->
+        <div id="campus-map"></div>
+
+        <div class="grid-3" style="margin-top: 16px;">
+          <div style="padding: 12px; border: 1px solid var(--border); border-radius: 10px; background: white;">
+            <div style="font-size: 12px; font-weight: 700; color: #059669;">Aryabhatta Wing (KJSSE)</div>
+            <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">Covers engineering lecture blocks, main labs, and RO water point.</div>
+          </div>
+          <div style="padding: 12px; border: 1px solid var(--border); border-radius: 10px; background: white;">
+            <div style="font-size: 12px; font-weight: 700; color: #0284C7;">Central Library Hall</div>
+            <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">Fully air-conditioned reading halls and thermal respite zones.</div>
+          </div>
+          <div style="padding: 12px; border: 1px solid var(--border); border-radius: 10px; background: white;">
+            <div style="font-size: 12px; font-weight: 700; color: #D97706;">Shaded Campus Walkways</div>
+            <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">Perimeter tree canopy connecting Vidyavihar gate to sports quad.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. COST CALCULATOR TAB -->
+    <section id="calculator" class="tab-pane">
+      <div class="grid-2">
+        <!-- Form -->
+        <div class="card">
+          <h3 class="card-title">⚡ AC & Cooling Electricity Cost Calculator</h3>
+          <form id="cooling-calc-form">
+            <div class="form-group">
+              <label for="calc-appliance">Cooling Appliance</label>
+              <select id="calc-appliance">
+                <option value="inverter_ac_1_5_ton">Inverter Split AC (1.5 Ton)</option>
+                <option value="split_ac_1_ton">Split AC (1.0 Ton)</option>
+                <option value="window_ac_1_5_ton">Window AC (1.5 Ton)</option>
+                <option value="air_cooler">Evaporative Desert Cooler</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="calc-star">BEE Energy Star Rating</label>
+              <select id="calc-star">
+                <option value="5" selected>5 Star (Highest Efficiency)</option>
+                <option value="4">4 Star</option>
+                <option value="3">3 Star (Standard)</option>
+                <option value="2">2 Star</option>
+                <option value="1">1 Star</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="calc-hours">Daily Operational Hours</label>
+              <input type="number" id="calc-hours" value="8" min="1" max="24" step="0.5">
+            </div>
+
+            <div class="form-group">
+              <label for="calc-temp">Thermostat Temperature (°C)</label>
+              <input type="number" id="calc-temp" value="24" min="18" max="28" step="1">
+            </div>
+
+            <div class="form-group">
+              <label for="calc-tariff">Electricity Tariff (₹ per kWh / Unit)</label>
+              <input type="number" id="calc-tariff" value="8.5" min="2" max="20" step="0.5">
+            </div>
+          </form>
+        </div>
+
+        <!-- Result Card -->
+        <div class="card" style="display: flex; flex-direction: column; justify-content: center;">
+          <h3 class="card-title">📊 Estimated Monthly Bill & BEE Insights</h3>
+          <div class="calc-result-box">
+            <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px;">
+              Estimated Monthly Electricity Cost
+            </div>
+            <div class="cost" id="calc-monthly-cost">₹2,856</div>
+            <div style="font-size: 13px; font-weight: 600; color: #065F46; margin-top: 4px;" id="calc-monthly-kwh">
+              336 kWh / month
+            </div>
+          </div>
+
+          <p id="calc-savings" style="margin-top: 16px; font-size: 12px; font-weight: 600; color: #047857; text-align: center;">
+            Setting your AC to 25°C saves up to ₹240/month compared to 22°C.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>EduHeat &copy; 2026 • Somaiya Vidyavihar University &bull; OpenStreetMap Data &bull; Open-Meteo Weather API</p>
+  </footer>
+
+  <!-- Leaflet Map JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <!-- Application Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
